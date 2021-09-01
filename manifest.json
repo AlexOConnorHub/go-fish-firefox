@@ -1,0 +1,19 @@
+{
+    "manifest_version": 2,
+    "name": "Go Fish",
+    "version": "1.0",
+    "description": "Go Fish game.",
+    "icons": {
+        "32": "icons/logo-32.png",
+        "48": "icons/logo-48.png",
+        "96": "icons/logo-96.png"
+    },
+    "permissions": [
+        "activeTab"
+    ],
+    "browser_action": {
+        "default_icon": "icons/icon-32.png",
+        "default_title": "Go Fish",
+        "default_popup": "popup/gofish.html"
+    }
+}

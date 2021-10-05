@@ -1,10 +1,21 @@
 // Leave at top, makes websocket
 var ws = new WebSocket("ws://localhost:4444/websocket");
 var keepAlive = setInterval(function() { ws.send("PING"); }, 55000);
+const state= {
+    DISCONNECTED: 0,
+    CONNECTED: 1,
+    READY_TO_START_GAME: 2,
+    PLAYING_GAME: 3,
+    WAITING_FOR_OTHERS: 4,
+    PLAYING: 5,
+    END_OF_GAME: 6
+};
+var state_of_game = state.DISCONNECTED;
 
-// INIT message upon connection
+// CONNECTED message when starting connection
 ws.onopen = function () {
-    ws.send("INIT");
+    ws.send("CONNECTED");
+    state_of_game = state.CONNECTED;
 };
 
 // Upon receiving a message
@@ -14,11 +25,7 @@ ws.onmessage = function (evt) {
 
 // Add functions here
 handler = function() {
-    ws.send("Test");
-}
-
-random = function() {
-    console.log("Hello");
+    ws.send("INCIMENT");
 }
 
 // This is where to add event listeners

@@ -1,6 +1,6 @@
 // Leave at top, makes websocket
 var ws = new WebSocket("ws://localhost:4444/websocket");
-var keepAlive = setInterval(function() { ws.send("PING"); }, 55000);
+var keepAlive = setInterval(function() { ws.send("PING"); }, 1000);
 const state= {
     DISCONNECTED: 0,
     CONNECTED: 1,
@@ -21,6 +21,11 @@ ws.onopen = function () {
 // Upon receiving a message
 ws.onmessage = function (evt) {
     console.log(evt.data);
+};
+
+// Upon receiving a message
+ws.onclose = function (evt) {
+    console.log("Closed");
 };
 
 // Add functions here

@@ -1,5 +1,6 @@
 // Leave at top, makes websocket
 var ws = new WebSocket("ws://localhost:4444/websocket");
+console.log(`made a websocket ${ws}`)
 var keepAlive = setInterval(function() { ws.send("PING"); }, 1000);
 const state= {
     DISCONNECTED: 0,
@@ -18,19 +19,19 @@ ws.onopen = function () {
     state_of_game = state.CONNECTED;
 };
 
-// Upon receiving a message
+// Upon receiving a message ...
 ws.onmessage = function (evt) {
     console.log(evt.data);
 };
 
-// Upon receiving a message
+// When we close do this:
 ws.onclose = function (evt) {
     console.log("Closed");
 };
 
 // Add functions here
-handler = function() {
-    ws.send("INCIMENT");
+handler = function() { // called when increment is clicked
+    ws.send("INCREMENT");
 }
 
 // This is where to add event listeners

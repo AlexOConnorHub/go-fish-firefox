@@ -1,15 +1,305 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="gofish.css" />
+    <!-- the below css is from selfthinker on github. credit given in the file -->
+    <link rel="stylesheet" type="text/css" href="cards.css" media="screen" />
 </head>
 
-<body>
-    <script src="gofish.js"></script>
-    <button type="button" id="TestButton">Test</button>
-</body>
+<!-- grid display -->
+<body class="playArea">
+    <div id="opponentHand" class="playingCards tiny fourColours">
+        <ul class="hand">
+            <li>
+                <a class="card rank-8 hearts" href="#">
+                    <span class="rank">8</span>
+                    <span class="suit">&hearts;</span>
+                </a>
+            </li>
+            <li>
+                <strong>
+                    <a class="card rank-9 spades" href="#">
+                        <span class="rank">9</span>
+                        <span class="suit">&spades;</span>
+                    </a>
+                </strong>
+            </li>
+            <li>
+                <a class="card rank-10 clubs" href="#">
+                    <span class="rank">10</span>
+                    <span class="suit">&clubs;</span>
+                </a>
+            </li>
+            <li>
+                <a class="card rank-7 diams" href="#">
+                    <span class="rank">7</span>
+                    <span class="suit">&diams;</span>
+                </a>
+            </li>
+            <li>
+                <a class="card rank-8 hearts" href="#">
+                    <span class="rank">8</span>
+                    <span class="suit">&hearts;</span>
+                </a>
+            </li>
+            <li>
+                <a class="card rank-9 spades" href="#">
+                    <span class="rank">9</span>
+                    <span class="suit">&spades;</span>
+                </a>
+                
+            </li>
+            <li>
+                <a class="card rank-10 clubs" href="#">
+                    <span class="rank">10</span>
+                    <span class="suit">&clubs;</span>
+                </a>
+            </li>
+            <li>
+                <a class="card rank-j diams" href="#">
+                    <span class="rank">J</span>
+                    <span class="suit">&diams;</span>
+                </a>
+            </li>
+        </ul>
+        <div class="clear"></div>
+    </div>
+    <div id="opponentSets" class="playingCards miniscule rotateHand fourColours">
+        <div class="set">
+            <ul class="hand">
+                <li>
+                    <a class="card rank-10 clubs" href="#">
+                        <span class="rank">10</span>
+                        <span class="suit">&clubs;</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="card rank-7 diams" href="#">
+                        <span class="rank">7</span>
+                        <span class="suit">&diams;</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="card rank-8 hearts" href="#">
+                        <span class="rank">8</span>
+                        <span class="suit">&hearts;</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="card rank-9 spades" href="#">
+                        <span class="rank">9</span>
+                        <span class="suit">&spades;</span>
+                    </a>
+                    
+                </li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="set">
+            <ul class="hand">
+                <li>
+                    <a class="card rank-10 clubs" href="#">
+                        <span class="rank">10</span>
+                        <span class="suit">&clubs;</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="card rank-7 diams" href="#">
+                        <span class="rank">7</span>
+                        <span class="suit">&diams;</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="card rank-8 hearts" href="#">
+                        <span class="rank">8</span>
+                        <span class="suit">&hearts;</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="card rank-9 spades" href="#">
+                        <span class="rank">9</span>
+                        <span class="suit">&spades;</span>
+                    </a>
+                    
+                </li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
 
+
+    <div id="drawPile" class="playingCards tiny fourColours">
+        <div class="card back little">*</div>
+    </div>
+
+    <div id="yourSets" class="playingCards miniscule rotateHand fourColours">
+        <div class="set">
+            <ul class="hand">
+                <li>
+                    <a class="card rank-10 clubs" href="#">
+                        <span class="rank">10</span>
+                        <span class="suit">&clubs;</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="card rank-7 diams" href="#">
+                        <span class="rank">7</span>
+                        <span class="suit">&diams;</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="card rank-8 hearts" href="#">
+                        <span class="rank">8</span>
+                        <span class="suit">&hearts;</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="card rank-9 spades" href="#">
+                        <span class="rank">9</span>
+                        <span class="suit">&spades;</span>
+                    </a>
+                    
+                </li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="set">
+            <ul class="hand">
+                <li>
+                    <a class="card rank-10 clubs" href="#">
+                        <span class="rank">10</span>
+                        <span class="suit">&clubs;</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="card rank-7 diams" href="#">
+                        <span class="rank">7</span>
+                        <span class="suit">&diams;</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="card rank-8 hearts" href="#">
+                        <span class="rank">8</span>
+                        <span class="suit">&hearts;</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="card rank-9 spades" href="#">
+                        <span class="rank">9</span>
+                        <span class="suit">&spades;</span>
+                    </a>
+                    
+                </li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div id="yourHand" class="playingCards tiny fourColours">
+        <ul class="hand">
+            <li>
+                <a class="card rank-8 hearts" href="#">
+                    <span class="rank">8</span>
+                    <span class="suit">&hearts;</span>
+                </a>
+            </li>
+            <li>
+                <a class="card rank-9 spades" href="#">
+                    <span class="rank">9</span>
+                    <span class="suit">&spades;</span>
+                </a>
+            </li>
+            <li>
+                <a class="card rank-10 clubs" href="#">
+                    <span class="rank">10</span>
+                    <span class="suit">&clubs;</span>
+                </a>
+            </li>
+            <li>
+                <a class="card rank-7 diams" href="#">
+                    <span class="rank">7</span>
+                    <span class="suit">&diams;</span>
+                </a>
+            </li>
+            <li>
+                <a class="card rank-8 hearts" href="#">
+                    <span class="rank">8</span>
+                    <span class="suit">&hearts;</span>
+                </a>
+            </li>
+            <li>
+                <a class="card rank-9 spades" href="#">
+                    <span class="rank">9</span>
+                    <span class="suit">&spades;</span>
+                </a>
+                
+            </li>
+            <li>
+                <a class="card rank-10 clubs" href="#">
+                    <span class="rank">10</span>
+                    <span class="suit">&clubs;</span>
+                </a>
+            </li>
+            <li>
+                <a class="card rank-j diams" href="#">
+                    <span class="rank">J</span>
+                    <span class="suit">&diams;</span>
+                </a>
+            </li>
+            <li>
+                <a class="card rank-8 hearts" href="#">
+                    <span class="rank">8</span>
+                    <span class="suit">&hearts;</span>
+                </a>
+            </li>
+            <li>
+                <a class="card rank-9 spades" href="#">
+                    <span class="rank">9</span>
+                    <span class="suit">&spades;</span>
+                </a>
+            </li>
+            <li>
+                <a class="card rank-10 clubs" href="#">
+                    <span class="rank">10</span>
+                    <span class="suit">&clubs;</span>
+                </a>
+            </li>
+            <li>
+                <a class="card rank-7 diams" href="#">
+                    <span class="rank">7</span>
+                    <span class="suit">&diams;</span>
+                </a>
+            </li>
+            <li>
+                <a class="card rank-8 hearts" href="#">
+                    <span class="rank">8</span>
+                    <span class="suit">&hearts;</span>
+                </a>
+            </li>
+            <li>
+                <a class="card rank-9 spades" href="#">
+                    <span class="rank">9</span>
+                    <span class="suit">&spades;</span>
+                </a>
+                
+            </li>
+            <li>
+                <a class="card rank-10 clubs" href="#">
+                    <span class="rank">10</span>
+                    <span class="suit">&clubs;</span>
+                </a>
+            </li>
+            <li>
+                <a class="card rank-j diams" href="#">
+                    <span class="rank">J</span>
+                    <span class="suit">&diams;</span>
+                </a>
+            </li>
+        </ul>
+        <div class="clear"></div>
+    </div>
+
+    <button type="button" id="TestButton">Increment</button>
+    <script src="gofish.js"></script>
+</body>
 </html>

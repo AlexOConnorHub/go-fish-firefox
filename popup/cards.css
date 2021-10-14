@@ -707,25 +707,25 @@ Adapted from:
   transform: translate(-3.5em, 2.8em) rotate(66deg);
 }
 /* miniscule rotated hand */
-.playingCards.rotateHand.miniscule ul.hand li:nth-child(1) {
+.playingCards.rotateHand.miniscule.set ul.hand li:nth-child(1) {
   -moz-transform: translate(.7em, .2em) rotate(-15deg);
   -webkit-transform: translate(.7em, .2em) rotate(-15deg);
   -o-transform: translate(.7em, .2em) rotate(-15deg);
   transform: translate(.7em, .2em) rotate(-15deg);
 }
-.playingCards.rotateHand.miniscule ul.hand li:nth-child(2) {
+.playingCards.rotateHand.miniscule.set ul.hand li:nth-child(2) {
   -moz-transform: translate(.3em, .1em) rotate(-6deg);
   -webkit-transform: translate(.3em, .1em) rotate(-6deg);
   -o-transform: translate(.3em, .1em) rotate(-6deg);
   transform: translate(.3em, .1em) rotate(-6deg);
 }
-.playingCards.rotateHand.miniscule ul.hand li:nth-child(3) {
+.playingCards.rotateHand.miniscule.set ul.hand li:nth-child(3) {
   -moz-transform: translate(-.1em, .1em) rotate(3deg);
   -webkit-transform: translate(-.1em, .1em) rotate(3deg);
   -o-transform: translate(-.1em, .1em) rotate(3deg);
   transform: translate(-.1em, .1em) rotate(3deg);
 }
-.playingCards.rotateHand.miniscule ul.hand li:nth-child(4) {
+.playingCards.rotateHand.miniscule.set ul.hand li:nth-child(4) {
   -moz-transform: translate(-.5em, .2em) rotate(12deg);
   -webkit-transform: translate(-.5em, .2em) rotate(12deg);
   -o-transform: translate(-.5em, .2em) rotate(12deg);

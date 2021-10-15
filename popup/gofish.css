@@ -2,7 +2,7 @@
 html{
   width: 450px;
   height: 450px;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-image: linear-gradient(37deg,#045f9b, #0879d5);
   background-repeat:no-repeat;
 }
@@ -55,8 +55,20 @@ body {
 #drawPile {
   grid-area: drawPile;
 }
-
-/* play hand styling */
+/* rotating and flipping */
+#p2Hand.playingCards .hand,
+#p2Sets.playingCards .hand.set {
+  transform: rotate(180deg);
+}
+#p3Hand.playingCards .hand,
+#p3Sets.playingCards .hand.set {
+  transform: rotate(90deg);
+}
+#p4Hand.playingCards .hand,
+#p4Sets.playingCards .hand.set {
+  transform: rotate(-90deg);
+}
+/* play hand positioning */
 #p2Hand,
 #p1Hand,
 #drawPile {
@@ -68,19 +80,16 @@ body {
   bottom: 35px;
 }
 #p2Hand.playingCards .hand {
-  transform: rotate(180deg);
   position: relative;
   top: 20px;
   left: 109%;
 }
 #p3Hand.playingCards .hand {
-  transform: rotate(90deg);
   position: relative;
   bottom: 59%;
   left: 40%;
 }
 #p4Hand.playingCards .hand {
-  transform: rotate(-90deg);
   position: relative;
   bottom: -7%;
   right: 40%;
@@ -89,12 +98,53 @@ body {
 .playingCards ul.hand {
   margin-bottom: 0 !important;
 }
-/* set styling */
+/* set positioning */
 .playingCards .hand.set {
-  height: 4em;
+  height: 3.4em;
 }
-
-
-#TestButton {
-display: none;
+#p1Sets,
+#p2Sets,
+#p3Sets,
+#p4Sets {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 }
+#p1Sets {
+  grid-template-areas:
+  "set7 set5 set6"
+  ".    set4 set2"
+  ".    set3 set1"
+  ;
+}
+#p2Sets {
+  grid-template-areas:
+  "set5 set2 set1"
+  "set6 set4 set3"
+  ".    set8 set7"
+  ;
+}
+#p3Sets {
+  grid-template-areas:
+  "set1 set2 set4"
+  "set3 .    .   "
+  "set5 .    .   "
+  ;
+}
+#p4Sets {
+  grid-template-areas:
+  "set9 set6 set5"
+  "set8 set4 set3"
+  "set7 set2 set1"
+  ;
+}
+/* setting up the grid areas */
+.playingCards .hand.set:nth-child(1) {grid-area: set1;}
+.playingCards .hand.set:nth-child(2) {grid-area: set2;}
+.playingCards .hand.set:nth-child(3) {grid-area: set3;}
+.playingCards .hand.set:nth-child(4) {grid-area: set4;}
+.playingCards .hand.set:nth-child(5) {grid-area: set5;}
+.playingCards .hand.set:nth-child(6) {grid-area: set6;}
+.playingCards .hand.set:nth-child(7) {grid-area: set7;}
+.playingCards .hand.set:nth-child(8) {grid-area: set8;}
+.playingCards .hand.set:nth-child(9) {grid-area: set9;}

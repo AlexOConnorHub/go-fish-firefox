@@ -138,6 +138,11 @@ body {
   "set7 set2 set1"
   ;
 }
+#drawPile.playingCards ul.dexk {
+  position: relative;
+  bottom: 2em;
+  right: 2.2em;
+}
 /* setting up the grid areas */
 .playingCards .hand.set:nth-child(1) {grid-area: set1;}
 .playingCards .hand.set:nth-child(2) {grid-area: set2;}

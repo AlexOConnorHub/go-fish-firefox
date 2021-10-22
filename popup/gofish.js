@@ -1,13 +1,3 @@
-// locate some elements
-const p1Hand = dq("#p1Hand");
-const p1Sets = dq("#p1Sets");
-const p2Hand = dq("#p2Hand");
-const p2Sets = dq("#p2Sets");
-const p3Hand = dq("#p3Hand");
-const p3Sets = dq("#p3Sets");
-const p4Hand = dq("#p4Hand");
-const p4Sets = dq("#p4Sets");
-
 // Makes websocket
 var ws = new WebSocket("ws://localhost:4444/websocket");
 console.log(`made a websocket ${ws}`)
@@ -25,8 +15,8 @@ var state_of_game = state.DISCONNECTED;
 
 // CONNECTED message when starting connection
 ws.onopen = function () {
-    ws.send("CONNECTED");
     state_of_game = state.CONNECTED;
+    ws.send(JSON.stringify(state.CONNECTED));
 };
 
 // Upon receiving a message ...
@@ -46,7 +36,7 @@ handler = function() { // called when increment is clicked
 }
 
 // This is where to add event listeners
-document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById("TestButton").addEventListener("click", handler);
-});
+// document.addEventListener('DOMContentLoaded', function () {
+//     document.getElementById("TestButton").addEventListener("click", handler);
+// });
 

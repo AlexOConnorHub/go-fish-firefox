@@ -12,7 +12,11 @@ let card = (rank, suit) => {
   li.appendChild(a)
   return li;
 }
-
+let cardBack = () => {
+  div = dc("div", "card back", "*");
+  li = dc("li").appendChild(div);
+  return li;
+}
 let set = (rank) => {
   ul = dc("ul", "hand set")
   shuffleSuits();
@@ -21,29 +25,22 @@ let set = (rank) => {
   });
   return ul;
 }
-
 let hand = (cards) => {
   ul = dc("ul", "hand")
   cards.forEach(card => {
     card = card.split(" ")
     ul.appendChild(card(card[0], card[1]));
   });
-  return ul;
+  return ul.appendChild(dc("div", "clear"));
+}
+let hiddenHand = (cardNumber) => {
+  ul = dc("ul", "hand")
+  for (i = 0; i < cardNumber; i++) {
+    ul.appendChild(cardBack());
+  }
+  return ul.appendChild(dc("div", "clear"));;
 }
 
-
-// helpers
-let dq = (sel) => {return document.querySelector(sel);}
-let dc = (tag, classes = null, text = null) => {
-  let elem = document.createElement(tag);
-  if (classes) {
-    elem.className = classes;
-  }
-  if (text) {
-    elem.innerHTML = text;
-  }
-  return elem;
-}
 let shuffleSuits = () => {
   suits = suits // thanks to superluminary on SO for :
   .map((card) => ({ card, sort: Math.random() }))

@@ -1,4 +1,3 @@
-// Makes websocket
 var ws = new WebSocket("ws://localhost:4444/websocket");
 console.log(`made a websocket ${ws}`)
 var keepAlive = setInterval(function() { ws.send("PING"); }, 1000);
@@ -11,26 +10,26 @@ const state= {
     PLAYING: 5,
     END_OF_GAME: 6
 };
-var state_of_game = state.DISCONNECTED;
+var info = {
+    "state_of_game": state.DISCONNECTED,
+    "am_ready": false
+}
 
 // CONNECTED message when starting connection
 ws.onopen = function () {
-    state_of_game = state.CONNECTED;
-    ws.send(JSON.stringify(state.CONNECTED));
+    info["state_of_game"] = state.CONNECTED;
+    ws.send(JSON.stringify(info));
 };
 
-// Upon receiving a message ...
 ws.onmessage = function (evt) {
     console.log(evt.data);
     // here i will use the JSON object to do various things
 };
 
-// When we close do this:
 ws.onclose = function (evt) {
     console.log("Closed");
 };
 
-// Add functions here
 handler = function() { // called when increment is clicked
     ws.send("INCREMENT");
 }

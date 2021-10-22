@@ -9,7 +9,9 @@
         "96": "icons/logo-96.png"
     },
     "permissions": [
-        "activeTab"
+        "activeTab",
+        "contextMenus",
+        "<all_urls>"
     ],
     "browser_action": {
         "default_icon": "icons/icon-32.png",

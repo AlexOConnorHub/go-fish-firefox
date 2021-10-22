@@ -12,7 +12,7 @@ const state= {
 };
 var info = {
     "state_of_game": state.DISCONNECTED,
-    "am_ready": false
+    "am_ready": true
 }
 
 // CONNECTED message when starting connection
@@ -29,10 +29,6 @@ ws.onmessage = function (evt) {
 ws.onclose = function (evt) {
     console.log("Closed");
 };
-
-handler = function() { // called when increment is clicked
-    ws.send("INCREMENT");
-}
 
 // This is where to add event listeners
 // document.addEventListener('DOMContentLoaded', function () {

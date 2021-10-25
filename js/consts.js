@@ -20,4 +20,4 @@ const p3Hand = dq("#p3Hand");
 const p3Sets = dq("#p3Sets");
 const p4Hand = dq("#p4Hand");
 const p4Sets = dq("#p4Sets");
-const drawPile = dq("#drawPile")
+const drawPile = dq("#drawPile");

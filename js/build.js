@@ -13,8 +13,9 @@ let card = (rank, suit) => {
   return li;
 } // returns a card back
 let cardBack = () => {
-  div = dc("div", "card back", "*");
-  li = dc("li").appendChild(div);
+  a = dc("a", "card back", "*");
+  a.href = "#";
+  li = dc("li"); li.appendChild(a);
   return li;
 } // returns a set of spec. rank
 let set = (rank) => {
@@ -27,18 +28,20 @@ let set = (rank) => {
 } // returns hand with the specified cards
 let hand = (cards) => {
   ul = dc("ul", "hand")
-  cards.forEach(card => {
-    card = card.split(" ")
-    ul.appendChild(card(card[0], card[1]));
+  cards.forEach(crd => {
+    crd = crd.split(" ")
+    ul.appendChild(card(crd[0], crd[1]));
   });
-  return ul.appendChild(dc("div", "clear"));
+  ul.appendChild(dc("div", "clear"))
+  return ul;
 } // returns an overturned hand with specified number of cards
 let hiddenHand = (cardNumber) => {
   ul = dc("ul", "hand")
   for (i = 0; i < cardNumber; i++) {
     ul.appendChild(cardBack());
   }
-  return ul.appendChild(dc("div", "clear"));;
+  ul.appendChild(dc("div", "clear"));
+  return ul;
 } // shuffles the suit array
 let shuffleSuits = () => {
   suits = suits // thanks to superluminary on SO for :

@@ -2,9 +2,9 @@
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="gofish.css" />
+    <link rel="stylesheet" href="css/layout.css" />
     <!-- the below css is largely from selfthinker on github. credit given in the file -->
-    <link rel="stylesheet" type="text/css" href="cards.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/cards.css" media="screen" />
 </head>
 
 <!-- grid display -->
@@ -20,6 +20,8 @@
     <div id="p4Sets" class="playingCards miniscule rotateHand fourColours set"></div>
     <!-- drawpile -->
     <div id="drawPile" class="playingCards tiny">
+        <button id="set">Set</button>
+        <button id="get">Get</button>
         <ul class="deck"></ul>
     </div>
     <!-- yourself -->
@@ -29,9 +31,8 @@
 </html>
 
 <!-- scripts -->
-<script src="consts.js"></script>   <!-- helper f(x)s -->
-<script src="build.js"></script>    <!-- card construction -->
-<script src="gofish.js"></script>   <!-- websocket work -->
-<script src="/deps/fs.js"></script> <!-- file storage -->
-<script src="/deps/uuid.js"></script> <!-- uid -->
-<script src="id.js"></script>       <!-- uid generation/retrieval -->
+<script src="js/consts.js"></script>    <!-- helper f(x)s -->
+<script src="js/build.js"></script>     <!-- card construction -->
+<script src="js/ws.js"></script>        <!-- websocket work -->
+<script src="js/uuid.js"></script>      <!-- uid generation -->
+<script src="js/id.js"></script>        <!-- uid storage/retrieval -->

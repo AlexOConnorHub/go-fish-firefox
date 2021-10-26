@@ -11,21 +11,28 @@ const state= {
     END_OF_GAME: 6
 };
 var info = {
-    "state_of_game": state.DISCONNECTED,
-    "am_ready": true
+    state_of_game : state.DISCONNECTED,
+    am_ready : false
 }
 
+let send = () => {ws.send(JSON.stringify(info));}
 // CONNECTED message when starting connection
 ws.onopen = function () {
     info["state_of_game"] = state.CONNECTED;
-    ws.send(JSON.stringify(info));
+    send();
+    buildStartModule();
 };
-
 ws.onmessage = function (evt) {
     console.log(evt.data);
     // here i will use the JSON object to do various things
 };
-
 ws.onclose = function (evt) {
+    info["state_of_game"] = state.DISCONNECTED;
     console.log("Closed");
 };
+
+let start = () => {
+    info.am_ready = true;
+    info.state_of_game = state.READY_TO_START_GAME;
+    send();
+}

@@ -49,3 +49,19 @@ let shuffleSuits = () => {
   .sort((a, b) => a.sort - b.sort)
   .map(({ card }) => card)
 }
+
+// other things to build
+let module = (children) => {
+  m = dc("div", "module");
+  div = dc("div");
+  children.forEach(child => {
+    div.appendChild(child);
+  })
+  m.appendChild(div);
+  return m;
+}
+let buildStartModule = () => {
+  button = dc("button", "btn start", "Start");
+  button.addEventListener("click", start); 
+  document.body.appendChild(module([button]));
+}

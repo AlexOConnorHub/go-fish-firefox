@@ -42,7 +42,15 @@ let hiddenHand = (cardNumber) => {
   }
   ul.appendChild(dc("div", "clear"));
   return ul;
-} // shuffles the suit array
+}
+// {"hand": ["6 diams", "2 hearts", "6 spades", "7 diams", "6 clubs", "j spades", "2 clubs"], "other_hands": [], "matches": [], "state": 5}
+let drawGame = () => {
+  if (game.hand) {
+    p1Hand.innerHTML = '';
+    p1Hand.appendChild(hand(game.hand));
+  }
+}
+// shuffles the suit array
 let shuffleSuits = () => {
   suits = suits // thanks to superluminary on SO for :
   .map((card) => ({ card, sort: Math.random() }))

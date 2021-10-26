@@ -14,25 +14,31 @@ var info = {
     state_of_game : state.DISCONNECTED,
     am_ready : false
 }
+var game = {};
 
 let send = () => {ws.send(JSON.stringify(info));}
 // CONNECTED message when starting connection
 ws.onopen = function () {
-    info["state_of_game"] = state.CONNECTED;
+    info.state_of_game = state.CONNECTED;
     send();
     buildStartModule();
 };
-ws.onmessage = function (evt) {
-    console.log(evt.data);
-    // here i will use the JSON object to do various things
+ws.onmessage = function (event) {
+    obj = JSON.parse(event.data);
+    // we want to figure out a way to not call this every single time
+    if (game != event.data) {
+        game = obj;
+        drawGame();
+    }
 };
 ws.onclose = function (evt) {
-    info["state_of_game"] = state.DISCONNECTED;
+    info.state_of_game = state.DISCONNECTED;
     console.log("Closed");
 };
 
-let start = () => {
+let start = (e) => {
     info.am_ready = true;
     info.state_of_game = state.READY_TO_START_GAME;
     send();
+    dq(".module").remove();
 }

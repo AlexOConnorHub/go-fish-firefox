@@ -10,6 +10,11 @@ let dc = (tag, classes = null, text = null) => {
   }
   return elem;
 }
+let appendChildren = (elem, children) => {
+    children.forEach(child => {
+    elem.appendChild(child);
+  })
+}
 
 // locate some elements
 const p1Hand = dq("#p1Hand");

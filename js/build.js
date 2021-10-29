@@ -59,17 +59,25 @@ let shuffleSuits = () => {
 }
 
 // other things to build
+// pulls up a module with contents
 let module = (children) => {
   m = dc("div", "module");
   div = dc("div");
-  children.forEach(child => {
-    div.appendChild(child);
-  })
+  appendChildren(div, children)
   m.appendChild(div);
   return m;
-}
+} // allows player to start a game
 let buildStartModule = () => {
   button = dc("button", "btn start", "Start");
   button.addEventListener("click", start); 
   document.body.appendChild(module([button]));
+} // lets player ask another player for a card
+let buildPlayModule = () => {
+  input = dc("input", "ask btn mb-half");
+  input.placeholder = "2 hearts";
+  button = dc("button", "btn ask", "Ask for Card");
+  button.addEventListener("click", ask);
+  flexbox = dc("div", "flexbox vertical center")
+  appendChildren(flexbox, [input, button]);
+  document.body.appendChild(module([flexbox]));
 }

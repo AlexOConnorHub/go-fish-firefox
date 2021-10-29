@@ -1,0 +1,77 @@
+/* some layout, colors, and styling tweaks */
+html{
+  width: 450px;
+  height: 450px;
+  /* overflow: hidden; */
+  background-image: linear-gradient(37deg,#045f9b, #0879d5);
+  background-repeat:no-repeat;
+}
+
+body {
+  width: 428px;
+  height: 94%;
+  padding: 3px;  
+  overflow: hidden;
+}
+
+/* module */
+.module {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.module > div {
+  padding: 2em 5em;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 2px 2px 9px 1px #393939;
+}
+.module div button.btn {
+  border-radius: 0.2em;
+  box-shadow: 1px 1px 4px 0 #000000b3;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.module div button.start {
+  background: #0bb50b;
+  padding: 0.5em 1.2em;
+  font-size: 1.3em;
+  color: white;
+}
+.module div button.ask {
+  background: blue;
+  padding: 0.5em 1.2em;
+  font-size: 1em;
+  color: white;
+}
+.module div input.ask {
+  border-radius: 0.2em;
+  outline: none;
+  border: none;
+  font-size: larger;
+  text-align: center;
+}
+.module div input.ask::placeholder {
+  color: lightgrey;
+}
+
+/* flexbox */
+.flexbox {
+  display: flex;
+}
+.flexbox.vertical {
+  flex-direction: column;
+}
+.flexbox.center {
+  justify-content: center;
+  align-items: center;
+}
+
+/* adder styles */
+.mb-half {
+  margin-bottom: 0.5em;
+}

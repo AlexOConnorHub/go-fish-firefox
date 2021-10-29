@@ -1,4 +1,5 @@
-var ws = new WebSocket("ws://localhost:4444/websocket");
+let main = () => {
+let ws = new WebSocket(`ws://localhost:4444/websocket/${uuid}`);
 console.log(`made a websocket ${ws}`)
 var keepAlive = setInterval(function() { ws.send("PING"); }, 1000);
 const state= {
@@ -36,9 +37,19 @@ ws.onclose = function (evt) {
     console.log("Closed");
 };
 
+// tells server we're ready
 let start = (e) => {
     info.am_ready = true;
     info.state_of_game = state.READY_TO_START_GAME;
     send();
     dq(".module").remove();
+} // asks player for card
+let ask = () => {
+    info.card_played = dq("input.ask").value;
+    info.player_asked = "1"
+    info.state_of_game = state.READY_TO_START_GAME;
+    send();
+    dq(".module").remove();
 }
+}; // end main
+getID();

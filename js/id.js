@@ -23,4 +23,10 @@ let setID = () => {
     uuid
   });
   console.log(`ID stored: ${uuid}`);
+} // removes id (theoretically)
+let rmID = () => {
+  browser.storage.sync.remove({
+    uuid
+  });
+  console.log(`ID deleted`);
 }

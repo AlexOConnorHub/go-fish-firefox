@@ -9,7 +9,7 @@ let card = (rank, suit) => {
   a.appendChild(spanRank);
   a.appendChild(spanSuit);
   li = dc("li");
-  li.appendChild(a)
+  li.appendChild(a);
   return li;
 } // returns a card back
 let cardBack = () => {
@@ -43,8 +43,7 @@ let hiddenHand = (cardNumber) => {
   ul.appendChild(dc("div", "clear"));
   return ul;
 }
-// {"hand": ["6 diams", "2 hearts", "6 spades", "7 diams", "6 clubs", "j spades", "2 clubs"], "other_hands": [], "matches": [], "state": 5}
-let drawGame = () => {
+let drawBoard = () => { 
   if (game.hand) {
     p1Hand.innerHTML = '';
     p1Hand.appendChild(hand(game.hand));
@@ -70,6 +69,11 @@ let module = (children) => {
 let buildStartModule = () => {
   button = dc("button", "btn start", "Start");
   button.addEventListener("click", start); 
+  document.body.appendChild(module([button]));
+} // allows player to start a game
+let buildCancelModule = () => {
+  button = dc("button", "btn cancel", "Cancel");
+  button.addEventListener("click", cancel); 
   document.body.appendChild(module([button]));
 } // lets player ask another player for a card
 let buildPlayModule = () => {

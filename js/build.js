@@ -1,8 +1,7 @@
 // this file builds cards, sets, hands, and decks
-let suits = ["clubs", "hearts", "diams", "spades"]
 // returns a card with spec. rank and suit
 let card = (rank, suit) => {
-  spanRank = dc("span", "rank", rank);
+  spanRank = dc("span", "rank", rank.toUpperCase());
   spanSuit = dc("span", "suit", `&${suit};`);
   a = dc("a", `card rank-${rank} ${suit}`);
   a.href = "#";
@@ -42,12 +41,25 @@ let hiddenHand = (cardNumber) => {
   }
   ul.appendChild(dc("div", "clear"));
   return ul;
+} // redraws board
+let drawBoard = () => {
+  console.log("drawBoard")
+  clearBoard()
+  if (!numPlayers) {sortHandsSets();}
+  playerHands[game.p_id].appendChild(hand(game.hand));
+  game.other_hands.forEach(hand => {
+    playerHands[hand[0]].appendChild(hiddenHand(hand[1]));
+  });
+  game.matches.forEach(set => {
+    playerSets[set[0]].appendChild(set(set[1]));
+  });
 }
-let drawBoard = () => { 
-  if (game.hand) {
-    p1Hand.innerHTML = '';
-    p1Hand.appendChild(hand(game.hand));
-  }
+let clearBoard = () => {
+  [playerHands, playerSets].forEach(grp => {
+    grp.forEach(elem => {
+      elem.innerHTML = '';
+    });
+  });
 }
 // shuffles the suit array
 let shuffleSuits = () => {

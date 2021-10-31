@@ -39,23 +39,23 @@ Styles for CSS Playing Cards Adapted from:
 .playingCards.miniscule .card {
   font-size: .6em !important;
 }
-/* 
-.playingCards .card.little {
-  transform: scale(.8);
-}
-.playingCards .card.tiny {
-  transform: scale(.6);
-}
-.playingCards.little .card {
-  transform: scale(.8);
-}
-.playingCards.tiny .card {
-  transform: scale(.6);
-} */
-
 .playingCards a.card {
   text-decoration: none;
 }
+/* selected and hover states */
+#p1Hand.playingCards a.card:hover, 
+#p1Hand.playingCards a.card:active, 
+#p1Hand.playingCards a.card:focus,
+#p1Hand.playingCards label.card:hover,
+#p1Hand.playingCards strong .card {
+  bottom: 1.2em;
+  right: 0.2em;
+  /* z-index: 1; */
+}
+#p1Hand.playingCards label.card {
+  cursor: pointer;
+}
+
 .playingCards .card.back {
   text-indent: -4000px;
   background-color: #ccc;

@@ -58,6 +58,7 @@ body {
 .module div input.ask {
   border-radius: 0.2em;
   outline: none;
+  width: 8em;
   border: none;
   font-size: larger;
   text-align: center;
@@ -78,7 +79,26 @@ body {
   align-items: center;
 }
 
+/* animation */
+div.playingCards ul.hand li {
+  transition-duration: 1s;
+}
+div.playingCards.bounce ul.hand li {
+  animation: bounce cubic-bezier(.23,0,.26,.99) 1.1s forwards infinite;
+}
+div.playingCards.chosenHand ul.hand li a {
+  transform: scale(1.2);
+}
+
 /* adder styles */
 .mb-half {
   margin-bottom: 0.5em;
+}
+@keyframes bounce {
+  0%, 100% {
+    bottom: 0;
+  }
+  60% {
+    bottom: 10px;
+  }
 }

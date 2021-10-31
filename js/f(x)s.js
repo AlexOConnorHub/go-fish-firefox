@@ -153,9 +153,7 @@ let sanitize = (card) => {
 let tryAgain = () => {
   dq(".module").remove();
   bounceHands();
-}
-
-// manages basic game logic and state advance
+} // manages basic game logic and state advance
 let handleStates = () => {
   switch (game.state) {
   case 0:

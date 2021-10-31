@@ -47,6 +47,8 @@ let deck = (cardsLeft) => {
   for (i = 0; (i < cardsLeft) && (i < 10); i++) {
     ul.appendChild(cardBack());
   }
+  let deckSize = dc("span", "deckSize", `${cardsLeft}`);
+  ul.lastChild.appendChild(deckSize);
   ul.appendChild(dc("div", "clear"));
   return ul;
 } // redraws board
@@ -61,8 +63,8 @@ let drawBoard = () => {
     playerHands[hand[0]].appendChild(hiddenHand(hand[1]));
     numCardsInPlay += hand[1];
   });
-  game.matches.forEach(set => {
-    playerSets[set[0]].appendChild(set(set[1]));
+  game.matches.forEach(match => {
+    playerSets[match[0]].appendChild(set(match[1]));
     numCardsInPlay += 4;
   });
   drawPile.appendChild(deck(52 - numCardsInPlay));

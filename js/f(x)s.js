@@ -14,10 +14,16 @@ let cancel = () => {
     send();
 } // asks player for card
 let ask = () => {
-    info.card_played = sanitize(dq("input.ask").value);
+    let sanitaryCard = sanitize(dq("input.ask").value);
+    if (!sanitaryCard) {
+      tryAgain();
+      return;
+    }
+    info.card_played = sanitaryCard;
     info.state_of_game = state.PLAYING;
     console.log(info);
     dq(".module").remove();
+    dq(".chosenHand").classList.remove("chosenHand")
     send();
 } // maps grid positions to player ids 0-3
 let sortHandsSets = () => {
@@ -59,11 +65,12 @@ let chooseHand = (e) => {
   })
   let chosenHand = e.target.parentNode.parentNode.parentNode;
   chosenHand.classList.add("chosenHand")
+  console.log(chosenHand)
   info.player_asked = playerHands.indexOf(chosenHand);
   buildPlayModule();
 } // cleans the user input for a card (default is "a diams")
 let sanitize = (card) => {
-  let [rank, suit] = card.split(' ');
+  let [rank, suit] = card.toLowerCase().split(' ');
   console.log(`[rank, suit] = [${rank}, ${suit}]`);
   if (!rank || !suit) {return "a diams";}
   if (ranks.includes(rank) && suits.includes(suit)) {return card;}
@@ -114,36 +121,39 @@ let sanitize = (card) => {
         break;
       default:
         console.log("invalid card input");
-        return "a diams";
+        return false;
     }
   } // get suit
   if (!suits.includes(suit)) {
     switch (suit) {
-      case "hearts":
-      case "diams":
-      case "clubs":
-      case "spades":
-        break;
       case "diamonds":
       case "diamond":
+      case "d":
         suit = "diams";
         break;
       case "heart":
+      case "h":
         suit = "hearts";
         break;
       case "club":
+      case "c":
         suit = "clubs";
         break;
       case "spade":
+      case "s":
         suit = "spades";
         break;
       default:
         console.log("invalid card input");
-        return "a diams";
+        return false;
     }
   }
   return `${rank} ${suit}`;
-} // manages basic game logic and state advance
+} // makes player pick a valid card
+let tryAgain = () => {
+  return;
+}
+// manages basic game logic and state advance
 let handleStates = () => {
   switch (game.state) {
   case 0:

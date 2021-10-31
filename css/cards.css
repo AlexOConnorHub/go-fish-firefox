@@ -506,6 +506,11 @@ Styles for CSS Playing Cards Adapted from:
 }
 
 /* deck */
+.playingCards ul.deck li a {
+  -moz-box-shadow: .1em .1em .3em #333;
+  -webkit-box-shadow: .1em .1em .3em #333;
+  box-shadow: .1em .1em .3em #333;
+}
 .playingCards ul.deck li:nth-child(1)  { transform: rotate(0.0deg); }
 .playingCards ul.deck li:nth-child(2)  { transform: rotate(-17.3deg); }
 .playingCards ul.deck li:nth-child(3)  { transform: rotate(8.1deg); }

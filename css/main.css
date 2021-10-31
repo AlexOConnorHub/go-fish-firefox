@@ -90,6 +90,16 @@ div.playingCards.chosenHand ul.hand li a {
   transform: scale(1.2);
 }
 
+/* drawpile card count */
+div.playingCards ul.deck li span.deckSize {
+  position: absolute;
+  left: 25%;
+  bottom: 40%;
+  font-size: 1.4em;
+  color: white;
+  font-weight: bold;
+}
+
 /* adder styles */
 .mb-half {
   margin-bottom: 0.5em;

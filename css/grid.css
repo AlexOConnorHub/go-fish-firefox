@@ -54,11 +54,16 @@
 }
 /* play hand positioning */
 #p2Hand,
-#p1Hand,
-#drawPile {
+#p1Hand {
   display: flex;
   justify-content: space-around;
   margin: auto 0;
+}
+#drawPile {
+  display: flex;
+  margin: auto 0;
+  position: relative;
+  left: 1em;
 }
 #p1Hand.playingCards .hand  {
   bottom: 35px;

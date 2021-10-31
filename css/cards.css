@@ -50,7 +50,6 @@ Styles for CSS Playing Cards Adapted from:
 #p1Hand.playingCards strong .card {
   bottom: 1.2em;
   right: 0.2em;
-  /* z-index: 1; */
 }
 #p1Hand.playingCards label.card {
   cursor: pointer;
@@ -270,32 +269,6 @@ Styles for CSS Playing Cards Adapted from:
   content: "\2663\00A0\2663\00A0\2663 \A\2663\00A0\2663\00A0\2663\00A0\2663 \A\2663\00A0\2663\00A0\2663";
 }
 
-/*____________ symbols in the middle (faces as images) ____________*/
-
-.playingCards.faceImages .card.rank-j .suit:after,
-.playingCards.faceImages .card.rank-q .suit:after,
-.playingCards.faceImages .card.rank-k .suit:after {
-  content: '';
-}
-.playingCards.faceImages .card.rank-j,
-.playingCards.faceImages .card.rank-q,
-.playingCards.faceImages .card.rank-k,
-.playingCards.faceImages .card.joker {
-  background-repeat: no-repeat;
-  background-position: -1em 0;
-  /* @change: smaller cards: more negative distance from the left
-     bigger cards: 0 or more positive distance from the left */
-
-  /* for a centered full background image:
-  background-position: .35em 0;
-  -moz-background-size: contain;
-  -o-background-size: contain;
-  -webkit-background-size: contain;
-  -khtml-background-size: contain;
-  background-size: contain;
-  */
-}
-
 /*____________ symbols in the middle (faces as dingbat symbols) ____________*/
 
 .playingCards.simpleCards .card .suit:after,
@@ -350,10 +323,8 @@ Styles for CSS Playing Cards Adapted from:
   content: "\2663";
   right: .3em;
 }
-
 /* hand (in your hand or on table or as a deck)
 ********************************************************************/
-
 .playingCards ul.table,
 .playingCards ul.hand,
 .playingCards ul.deck {
@@ -386,64 +357,6 @@ Styles for CSS Playing Cards Adapted from:
 .playingCards ul.hand li {
   bottom: 0;
 }
-.playingCards ul.hand li:nth-child(1)  { left: 0; }
-.playingCards ul.hand li:nth-child(2)  { left: 1.1em; }
-.playingCards ul.hand li:nth-child(3)  { left: 2.2em; }
-.playingCards ul.hand li:nth-child(4)  { left: 3.3em; }
-.playingCards ul.hand li:nth-child(5)  { left: 4.4em; }
-.playingCards ul.hand li:nth-child(6)  { left: 5.5em; }
-.playingCards ul.hand li:nth-child(7)  { left: 6.6em; }
-.playingCards ul.hand li:nth-child(8)  { left: 7.7em; }
-.playingCards ul.hand li:nth-child(9)  { left: 8.8em; }
-.playingCards ul.hand li:nth-child(10) { left: 9.9em; }
-.playingCards ul.hand li:nth-child(11) { left: 11em; }
-.playingCards ul.hand li:nth-child(12) { left: 12.1em; }
-.playingCards ul.hand li:nth-child(13) { left: 13.2em; }
-
-.playingCards ul.hand li:nth-child(14) { left: 14.3em; }
-.playingCards ul.hand li:nth-child(15) { left: 15.4em; }
-.playingCards ul.hand li:nth-child(16) { left: 16.5em; }
-.playingCards ul.hand li:nth-child(17) { left: 17.6em; }
-.playingCards ul.hand li:nth-child(18) { left: 18.7em; }
-.playingCards ul.hand li:nth-child(19) { left: 19.8em; }
-.playingCards ul.hand li:nth-child(20) { left: 20.9em; }
-.playingCards ul.hand li:nth-child(21) { left: 22em; }
-.playingCards ul.hand li:nth-child(22) { left: 23.1em; }
-.playingCards ul.hand li:nth-child(23) { left: 24.2em; }
-.playingCards ul.hand li:nth-child(24) { left: 25.3em; }
-.playingCards ul.hand li:nth-child(25) { left: 26.4em; }
-.playingCards ul.hand li:nth-child(26) { left: 27.5em; }
-
-
-/* sizing for little */
-.playingCards.little ul.hand li:nth-child(1)  { left: 0; }
-.playingCards.little ul.hand li:nth-child(2)  { left: calc(1.1em * .8); }
-.playingCards.little ul.hand li:nth-child(3)  { left: calc(2.2em * .8); }
-.playingCards.little ul.hand li:nth-child(4)  { left: calc(3.3em * .8); }
-.playingCards.little ul.hand li:nth-child(5)  { left: calc(4.4em * .8); }
-.playingCards.little ul.hand li:nth-child(6)  { left: calc(5.5em * .8); }
-.playingCards.little ul.hand li:nth-child(7)  { left: calc(6.6em * .8); }
-.playingCards.little ul.hand li:nth-child(8)  { left: calc(7.7em * .8); }
-.playingCards.little ul.hand li:nth-child(9)  { left: calc(8.8em * .8); }
-.playingCards.little ul.hand li:nth-child(10) { left: calc(9.9em * .8); }
-.playingCards.little ul.hand li:nth-child(11) { left: calc(11em * .8); }
-.playingCards.little ul.hand li:nth-child(12) { left: calc(12.1em * .8); }
-.playingCards.little ul.hand li:nth-child(13) { left: calc(13.2em * .8); }
-
-.playingCards.little ul.hand li:nth-child(14) { left: calc(14.3em * .8); }
-.playingCards.little ul.hand li:nth-child(15) { left: calc(15.4em * .8); }
-.playingCards.little ul.hand li:nth-child(16) { left: calc(16.5em * .8); }
-.playingCards.little ul.hand li:nth-child(17) { left: calc(17.6em * .8); }
-.playingCards.little ul.hand li:nth-child(18) { left: calc(18.7em * .8); }
-.playingCards.little ul.hand li:nth-child(19) { left: calc(19.8em * .8); }
-.playingCards.little ul.hand li:nth-child(20) { left: calc(20.9em * .8); }
-.playingCards.little ul.hand li:nth-child(21) { left: calc(22em * .8); }
-.playingCards.little ul.hand li:nth-child(22) { left: calc(23.1em * .8); }
-.playingCards.little ul.hand li:nth-child(23) { left: calc(24.2em * .8); }
-.playingCards.little ul.hand li:nth-child(24) { left: calc(25.3em * .8); }
-.playingCards.little ul.hand li:nth-child(25) { left: calc(26.4em * .8); }
-.playingCards.little ul.hand li:nth-child(26) { left: calc(27.5em * .8); }
-
 /* sizing for tiny */
 .playingCards.tiny ul.hand li:nth-child(1)  { left: 20; }
 .playingCards.tiny ul.hand li:nth-child(2)  { left: calc(1.1em * .72); }
@@ -593,35 +506,13 @@ Styles for CSS Playing Cards Adapted from:
 }
 
 /* deck */
-.playingCards ul.deck li:nth-child(1)  { left: 0;    bottom: 0; }
-.playingCards ul.deck li:nth-child(2)  { left: 2px;  bottom: 1px; }
-.playingCards ul.deck li:nth-child(3)  { left: 4px;  bottom: 2px; }
-.playingCards ul.deck li:nth-child(4)  { left: 6px;  bottom: 3px; }
-.playingCards ul.deck li:nth-child(5)  { left: 8px;  bottom: 4px; }
-.playingCards ul.deck li:nth-child(6)  { left: 10px; bottom: 5px; }
-.playingCards ul.deck li:nth-child(7)  { left: 12px; bottom: 6px; }
-.playingCards ul.deck li:nth-child(8)  { left: 14px; bottom: 7px; }
-.playingCards ul.deck li:nth-child(9)  { left: 16px; bottom: 8px; }
-.playingCards ul.deck li:nth-child(10) { left: 18px; bottom: 9px; }
-.playingCards ul.deck li:nth-child(11) { left: 20px; bottom: 10px; }
-.playingCards ul.deck li:nth-child(12) { left: 22px; bottom: 11px; }
-.playingCards ul.deck li:nth-child(13) { left: 24px; bottom: 12px; }
-.playingCards ul.deck li:nth-child(14) { left: 26px; bottom: 13px; }
-.playingCards ul.deck li:nth-child(15) { left: 28px; bottom: 14px; }
-.playingCards ul.deck li:nth-child(16) { left: 30px; bottom: 15px; }
-.playingCards ul.deck li:nth-child(17) { left: 32px; bottom: 16px; }
-.playingCards ul.deck li:nth-child(18) { left: 34px; bottom: 17px; }
-.playingCards ul.deck li:nth-child(19) { left: 36px; bottom: 18px; }
-.playingCards ul.deck li:nth-child(20) { left: 38px; bottom: 19px; }
-.playingCards ul.deck li:nth-child(21) { left: 40px; bottom: 20px; }
-.playingCards ul.deck li:nth-child(22) { left: 42px; bottom: 21px; }
-.playingCards ul.deck li:nth-child(23) { left: 44px; bottom: 22px; }
-.playingCards ul.deck li:nth-child(24) { left: 46px; bottom: 23px; }
-.playingCards ul.deck li:nth-child(25) { left: 48px; bottom: 24px; }
-.playingCards ul.deck li:nth-child(26) { left: 50px; bottom: 25px; }
-.playingCards ul.deck li:nth-child(27) { left: 52px; bottom: 26px; }
-.playingCards ul.deck li:nth-child(28) { left: 54px; bottom: 27px; }
-.playingCards ul.deck li:nth-child(29) { left: 56px; bottom: 28px; }
-.playingCards ul.deck li:nth-child(30) { left: 58px; bottom: 29px; }
-.playingCards ul.deck li:nth-child(31) { left: 60px; bottom: 30px; }
-.playingCards ul.deck li:nth-child(32) { left: 62px; bottom: 31px; }
+.playingCards ul.deck li:nth-child(1)  { transform: rotate(0.0deg); }
+.playingCards ul.deck li:nth-child(2)  { transform: rotate(-17.3deg); }
+.playingCards ul.deck li:nth-child(3)  { transform: rotate(8.1deg); }
+.playingCards ul.deck li:nth-child(4)  { transform: rotate(11.1deg); }
+.playingCards ul.deck li:nth-child(5)  { transform: rotate(-12.3deg); }
+.playingCards ul.deck li:nth-child(6)  { transform: rotate(-3.2deg); }
+.playingCards ul.deck li:nth-child(7)  { transform: rotate(16.3deg); }
+.playingCards ul.deck li:nth-child(8)  { transform: rotate(-2.5deg); }
+.playingCards ul.deck li:nth-child(9)  { transform: rotate(-7.6deg); }
+.playingCards ul.deck li:nth-child(10) { transform: rotate(12.4deg); }

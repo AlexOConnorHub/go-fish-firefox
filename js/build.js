@@ -41,18 +41,31 @@ let hiddenHand = (cardNumber) => {
   }
   ul.appendChild(dc("div", "clear"));
   return ul;
+} // draws the drawpile
+let deck = (cardsLeft) => {
+  ul = dc("ul", "deck");
+  for (i = 0; (i < cardsLeft) && (i < 10); i++) {
+    ul.appendChild(cardBack());
+  }
+  ul.appendChild(dc("div", "clear"));
+  return ul;
 } // redraws board
 let drawBoard = () => {
   console.log("drawBoard")
-  clearBoard()
+  clearBoard();
+  let numCardsInPlay = 0;
   if (!numPlayers) {sortHandsSets();}
   playerHands[game.p_id].appendChild(hand(game.hand));
+  numCardsInPlay += game.hand.length;
   game.other_hands.forEach(hand => {
     playerHands[hand[0]].appendChild(hiddenHand(hand[1]));
+    numCardsInPlay += hand[1];
   });
   game.matches.forEach(set => {
     playerSets[set[0]].appendChild(set(set[1]));
+    numCardsInPlay += 4;
   });
+  drawPile.appendChild(deck(52 - numCardsInPlay));
 }
 let clearBoard = () => {
   [playerHands, playerSets].forEach(grp => {

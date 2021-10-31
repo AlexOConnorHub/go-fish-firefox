@@ -16,7 +16,7 @@ let cancel = () => {
 let ask = () => {
     let sanitaryCard = sanitize(dq("input.ask").value);
     if (!sanitaryCard) {
-      tryAgain();
+      buildShameOnYou();
       return;
     }
     info.card_played = sanitaryCard;
@@ -72,7 +72,7 @@ let chooseHand = (e) => {
 let sanitize = (card) => {
   let [rank, suit] = card.toLowerCase().split(' ');
   console.log(`[rank, suit] = [${rank}, ${suit}]`);
-  if (!rank || !suit) {return "a diams";}
+  if (!rank || !suit) {return false;}
   if (ranks.includes(rank) && suits.includes(suit)) {return card;}
   // get rank
   if (!ranks.includes(rank)) {
@@ -151,8 +151,10 @@ let sanitize = (card) => {
   return `${rank} ${suit}`;
 } // makes player pick a valid card
 let tryAgain = () => {
-  return;
+  dq(".module").remove();
+  bounceHands();
 }
+
 // manages basic game logic and state advance
 let handleStates = () => {
   switch (game.state) {

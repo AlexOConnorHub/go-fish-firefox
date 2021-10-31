@@ -53,6 +53,12 @@
   transform: rotate(-90deg);
 }
 /* play hand positioning */
+#p1Hand,
+#p2Hand,
+#p3Hand,
+#p4Hand {
+  z-index: 1;
+}
 #p2Hand,
 #p1Hand {
   display: flex;

@@ -65,6 +65,9 @@
   justify-content: space-around;
   margin: auto 0;
 }
+#p1Hand.tooBig {
+  justify-content: unset !important;
+}
 #drawPile {
   display: flex;
   margin: auto 0;

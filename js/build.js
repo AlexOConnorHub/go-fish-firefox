@@ -28,10 +28,15 @@ let set = (rank) => {
 let hand = (cards) => {
   ul = dc("ul", "hand")
   cards.forEach(crd => {
-    crd = crd.split(" ")
+    crd = crd.split(" ");
     ul.appendChild(card(crd[0], crd[1]));
   });
-  ul.appendChild(dc("div", "clear"))
+  ul.appendChild(dc("div", "clear"));
+  if (game.hand.length > 15) {
+    p1Hand.classList.add("tooBig");
+  } else {
+    p1Hand.classList.remove("tooBig");
+  }
   return ul;
 } // returns an overturned hand with specified number of cards
 let hiddenHand = (cardNumber) => {
@@ -47,8 +52,10 @@ let deck = (cardsLeft) => {
   for (i = 0; (i < cardsLeft) && (i < 10); i++) {
     ul.appendChild(cardBack());
   }
-  let deckSize = dc("span", "deckSize", `${cardsLeft}`);
-  ul.lastChild.appendChild(deckSize);
+  if (cardsLeft != 0) {
+    let deckSize = dc("span", "deckSize", `${cardsLeft}`);
+    ul.lastChild.appendChild(deckSize);
+  }
   ul.appendChild(dc("div", "clear"));
   return ul;
 } // redraws board

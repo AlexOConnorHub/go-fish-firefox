@@ -6,14 +6,12 @@ html{
   background-image: linear-gradient(37deg,#045f9b, #0879d5);
   background-repeat:no-repeat;
 }
-
 body {
   width: 428px;
   height: 94%;
   padding: 3px;  
   overflow: hidden;
 }
-
 /* module */
 .module {
   position: absolute;
@@ -104,12 +102,14 @@ div.playingCards ul.deck li span.deckSize {
   font-size: 1.4em;
   color: white;
   font-weight: bold;
+  text-align: center;
+  width: 2ch;
 }
 
 /* adder styles */
 .mb-half {
   margin-bottom: 0.5em;
-}
+} /* animations */
 @keyframes bounce {
   0%, 100% {
     bottom: 0;

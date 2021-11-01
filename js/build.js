@@ -137,7 +137,8 @@ let buildPlayModule = () => {
 } // builds module that scolds player for invalid input
 let buildShameOnYou = () => {
   let shameOnYou = dc("p", "shameOnYou", 
-    "Example of valid input:<br/><strong>Jack spades</strong><br/>Double-Click to continue.")
+    "Example of valid input:<strong><br/>Jack spades<br/>" + 
+    "js<br/>jack of spades<br/></strong>Double-Click to continue.")
   let okay = dc("button", "btn okay", "Okay");
   okay.addEventListener("click", tryAgain);
   let flexbox = dc("div", "flexbox vertical center")

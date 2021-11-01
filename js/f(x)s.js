@@ -72,6 +72,9 @@ let chooseHand = (e) => {
 let sanitize = (card) => {
   card = card.toLowerCase();
   let [rank, suit] = (card.length == 2) ? card.split('') : card.split(' ');
+  if (card.split(' ').length > 2) {
+    [rank,, suit] = card.split(' ');
+  }
   console.log(`[rank, suit] = [${rank}, ${suit}]`);
   if (!rank || !suit) {return false;}
   if (ranks.includes(rank) && suits.includes(suit)) {return card;}

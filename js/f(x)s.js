@@ -153,23 +153,45 @@ let sanitize = (card) => {
 let tryAgain = () => {
   dq(".module").remove();
   bounceHands();
-} // manages basic game logic and state advance
+} 
+let whosWinning = () => {
+  // if (game.matches.length <= 0) {return;}
+  let players = [...playerHands];
+  players = players.map(player => {
+    return playerHands.indexOf(player);
+  })
+  players.map(id => {
+    curWinner = (matchesOf(curWinner) <= matchesOf(id)) ? id : curWinner;
+  })
+  console.log(`curWinner is ${curWinner}`);
+} 
+let matchesOf = (id) => {
+  let count = 0;
+  console.log("game.matches.length", game.matches.length);
+  game.matches?.forEach(match => {
+    if (match[0] == id) {count++;}
+  })
+  return count;
+}
+// manages basic game logic and state advance
 let handleStates = () => {
   switch (game.state) {
   case 0:
   case 1:
     dq(".module")?.remove();
-    buildStartModule();
+    (curWinner != null) ? buildRestartModule() : buildStartModule();
     break;
   case 2:
     dq(".module")?.remove();
     buildCancelModule();
     break;
   case 3:
-  case 4:
+  case 4: // we've played at least once now
+    whosWinning();
     drawBoard();
     break;
   case 5:
+    whosWinning();
     dq(".module")?.remove();
     drawBoard();
     bounceHands();
@@ -181,5 +203,5 @@ let handleStates = () => {
     console.log(`invalid state: ${game.state}.`);
   }
   info.state_of_game = game.state;
-  if (game.state > 1) {info.am_ready = true;}
+  info.am_ready = (game.state > 1) ? true : false;
 }

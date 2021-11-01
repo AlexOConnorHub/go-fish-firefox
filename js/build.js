@@ -27,12 +27,12 @@ let set = (rank) => {
 } // returns hand with the specified cards
 let hand = (cards) => {
   ul = dc("ul", "hand")
-  cards.forEach(crd => {
+  cards?.forEach(crd => {
     crd = crd.split(" ");
     ul.appendChild(card(crd[0], crd[1]));
   });
   ul.appendChild(dc("div", "clear"));
-  if (game.hand.length > 15) {
+  if (game.hand?.length > 15) {
     p1Hand.classList.add("tooBig");
   } else {
     p1Hand.classList.remove("tooBig");
@@ -60,17 +60,16 @@ let deck = (cardsLeft) => {
   return ul;
 } // redraws board
 let drawBoard = () => {
-  console.log("drawBoard")
   clearBoard();
   let numCardsInPlay = 0;
   if (!numPlayers) {sortHandsSets();}
   playerHands[game.p_id].appendChild(hand(game.hand));
-  numCardsInPlay += game.hand.length;
-  game.other_hands.forEach(hand => {
+  numCardsInPlay += game.hand?.length;
+  game.other_hands?.forEach(hand => {
     playerHands[hand[0]].appendChild(hiddenHand(hand[1]));
     numCardsInPlay += hand[1];
   });
-  game.matches.forEach(match => {
+  game.matches?.forEach(match => {
     playerSets[match[0]].appendChild(set(match[1]));
     numCardsInPlay += 4;
   });
@@ -104,7 +103,17 @@ let buildStartModule = () => {
   let button = dc("button", "btn start", "Start");
   button.addEventListener("click", start); 
   document.body.appendChild(module([button]));
-} // allows player to start a game
+} // allows player to restart a game
+let buildRestartModule = () => {
+  let winLoss = dc("p", "winLoss", 
+    `You ${(curWinner == game.p_id) ? "won!" : "lost :/"}`);
+  //partialRedraw(); // redraw player's hand and set
+  let button = dc("button", "btn restart", "Restart");
+  button.addEventListener("click", start); 
+  let flexbox = dc("div", "flexbox vertical center")
+  appendChildren(flexbox, [winLoss, button]);
+  document.body.appendChild(module([flexbox]));
+} // allows player to change their mind
 let buildCancelModule = () => {
   let button = dc("button", "btn cancel", "Cancel");
   button.addEventListener("click", cancel); 
@@ -113,11 +122,18 @@ let buildCancelModule = () => {
 let buildPlayModule = () => {
   let input = dc("input", "ask btn mb-half");
   input.placeholder = "2 hearts";
+  input.addEventListener("keyup", function(event) {
+    // Number 13 is the "Enter" key on the keyboard
+    if (event.keyCode === 13) {
+      dq("button.ask").click();
+    }
+  }); 
   let button = dc("button", "btn ask", "Ask for Card");
   button.addEventListener("click", ask);
   let flexbox = dc("div", "flexbox vertical center")
   appendChildren(flexbox, [input, button]);
   document.body.appendChild(module([flexbox]));
+  input.focus();
 } // builds module that scolds player for invalid input
 let buildShameOnYou = () => {
   let shameOnYou = dc("p", "shameOnYou", 

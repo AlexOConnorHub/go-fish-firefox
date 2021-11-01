@@ -46,3 +46,4 @@ let playerSets = [p1Sets, p2Sets, p3Sets, p4Sets];
 var game = {};
 let numPlayers;
 let final;
+let curWinner = null;

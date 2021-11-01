@@ -70,13 +70,17 @@ let chooseHand = (e) => {
   buildPlayModule();
 } // cleans the user input for a card (default is "a diams")
 let sanitize = (card) => {
-  let [rank, suit] = card.toLowerCase().split(' ');
+  card = card.toLowerCase();
+  let [rank, suit] = (card.length == 2) ? card.split('') : card.split(' ');
   console.log(`[rank, suit] = [${rank}, ${suit}]`);
   if (!rank || !suit) {return false;}
   if (ranks.includes(rank) && suits.includes(suit)) {return card;}
   // get rank
   if (!ranks.includes(rank)) {
     switch (rank) {
+      case "0":
+        rank = "10";
+        break;
       case "two":
         rank = "2";
         break;

@@ -65,15 +65,16 @@ let drawBoard = () => {
   if (!numPlayers) {sortHandsSets();}
   playerHands[game.p_id].appendChild(hand(game.hand));
   numCardsInPlay += game.hand?.length;
-  game.other_hands?.forEach(hand => {
+  game.other_hands?.forEach(hand => { // other hands
     playerHands[hand[0]].appendChild(hiddenHand(hand[1]));
     numCardsInPlay += hand[1];
-  });
+  }); // sets
   game.matches?.forEach(match => {
     playerSets[match[0]].appendChild(set(match[1]));
     numCardsInPlay += 4;
-  });
+  }); // drawpile
   drawPile.appendChild(deck(52 - numCardsInPlay));
+  if (game.last_play.card_asked_for) {lastCardCorner();}
 }
 let clearBoard = () => {
   [playerHands, playerSets].forEach(grp => {
@@ -138,10 +139,26 @@ let buildPlayModule = () => {
 let buildShameOnYou = () => {
   let shameOnYou = dc("p", "shameOnYou", 
     "Example of valid input:<strong><br/>Jack spades<br/>" + 
-    "js<br/>jack of spades<br/></strong>Double-Click to continue.")
-  let okay = dc("button", "btn okay", "Okay");
-  okay.addEventListener("click", tryAgain);
+    "js<br/>jack of spades<br/></strong>")
+  // let okay = dc("button", "btn okay", "Okay");
+  // okay.addEventListener("click", tryAgain);
   let flexbox = dc("div", "flexbox vertical center")
-  appendChildren(flexbox, [shameOnYou, okay]);
+  appendChildren(flexbox, [shameOnYou]);
   document.body.appendChild(module([flexbox]));
+} // draws a small popup informing the player of last card played
+let lastCardCorner = () => {
+  let corner = dc("div", "lastCardPlayed corner playingCards " + 
+    "fourColours miniscule flexbox center");
+  let s = game.last_play.success;
+  let askingP = pidToPosition(game.last_play.player_asking);
+  let askedP = pidToPosition(game.last_play.player_asked);
+  let message = `${askingP} asked ${askedP} for this card,` + 
+    ` ${s ? "and received or drew": "but didn't get"} it.`;
+  message = dc("span", "capitalize", message);
+  let cardAsked = game.last_play.card_asked_for;
+  let div = dc("div");
+  div.appendChild(hand([cardAsked]));
+  destroy(".corner", 7000);
+  appendChildren(corner, [message, div]);
+  document.body.appendChild(corner);
 }

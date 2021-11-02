@@ -47,3 +47,4 @@ var game = {};
 let numPlayers;
 let final;
 let curWinner = null;
+let flag = false;

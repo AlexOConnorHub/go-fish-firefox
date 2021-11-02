@@ -2,13 +2,13 @@
 let send = () => {ws.send(JSON.stringify(info));}
 // tells server we're ready
 let start = () => {
-    dq(".module").remove();
+    destroy(".module")
     info.am_ready = true;
     info.state_of_game = state.READY_TO_START_GAME;
     send();
 } // lets player say that they aren't ready
 let cancel = () => {
-    dq(".module").remove();
+    destroy(".module")
     info.am_ready = false;
     info.state_of_game = state.CONNECTED;
     send();
@@ -17,12 +17,13 @@ let ask = () => {
     let sanitaryCard = sanitize(dq("input.ask").value);
     if (!sanitaryCard) {
       buildShameOnYou();
+      destroy(".module", 3000);
       return;
     }
     info.card_played = sanitaryCard;
     info.state_of_game = state.PLAYING;
     console.log(info);
-    dq(".module").remove();
+    destroy(".module")
     dq(".chosenHand").classList.remove("chosenHand")
     send();
 } // maps grid positions to player ids 0-3
@@ -158,11 +159,10 @@ let sanitize = (card) => {
   return `${rank} ${suit}`;
 } // makes player pick a valid card
 let tryAgain = () => {
-  dq(".module").remove();
+  destroy(".module");
   bounceHands();
-} 
+} // keeps track of who is currently winning
 let whosWinning = () => {
-  // if (game.matches.length <= 0) {return;}
   let players = [...playerHands];
   players = players.map(player => {
     return playerHands.indexOf(player);
@@ -170,26 +170,43 @@ let whosWinning = () => {
   players.map(id => {
     curWinner = (matchesOf(curWinner) <= matchesOf(id)) ? id : curWinner;
   })
-  console.log(`curWinner is ${curWinner}`);
-} 
+} // returns the number of matched player w/ p_id id has 
 let matchesOf = (id) => {
   let count = 0;
-  console.log("game.matches.length", game.matches.length);
   game.matches?.forEach(match => {
     if (match[0] == id) {count++;}
   })
   return count;
-}
-// manages basic game logic and state advance
+} // maps player_id to a player's relative position on this board
+let pidToPosition = (id) => {
+  switch(playerHands[id]) {
+    case p1Hand:
+      return "<strong>you</strong>";
+    case p2Hand:
+      return "the player <strong>across</strong> from you";
+    case p3Hand:
+      return "the player to your <strong>left</strong>";
+    case p4Hand:
+      return "the player to your <strong>right</strong>";
+    default:
+      return "another player";
+  }
+} // removes the first element found with the passed in selector
+let destroy = (selector, lifetime) => {
+  flag = false;
+  var thisInt = setInterval(() => { 
+    dq(selector)?.remove();
+    if (flag) {clearInterval(thisInt);}
+    flag = true;
+  }, lifetime);
+} // manages basic game logic and state advance
 let handleStates = () => {
   switch (game.state) {
   case 0:
   case 1:
-    dq(".module")?.remove();
     (curWinner != null) ? buildRestartModule() : buildStartModule();
     break;
   case 2:
-    dq(".module")?.remove();
     buildCancelModule();
     break;
   case 3:
@@ -199,7 +216,6 @@ let handleStates = () => {
     break;
   case 5:
     whosWinning();
-    dq(".module")?.remove();
     drawBoard();
     bounceHands();
     break;

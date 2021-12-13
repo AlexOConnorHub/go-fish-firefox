@@ -50,6 +50,8 @@ let swapSpots = () => {
   let ip3 = playerHands.indexOf(p3Hand);
   playerHands[ip2] = p3Hand;
   playerHands[ip3] = p2Hand;
+  playerSets[ip2] = p3Sets;
+  playerSets[ip3] = p2Sets;
 } // animates player's hands to indicate the
   // that the player should click on a hand
 let bounceHands = () => {

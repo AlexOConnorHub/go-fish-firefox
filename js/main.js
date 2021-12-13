@@ -1,8 +1,8 @@
 let ws;
 // called after uuid is obtained
 let main = () => {
-    host = "10.14.2.1";
-    port = 10000
+    host = "localhost";
+    port = 4444
     ws = new WebSocket(`ws://${host}:${port}/websocket/${uuid}`);
     var keepAlive = setInterval(function() { ws.send("PING"); }, 1000);
     // CONNECTED message when starting connection
